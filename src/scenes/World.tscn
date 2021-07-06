@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.0666667, 0.368627, 0.129412, 1 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 100.535, 0.001, 99.8231 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.411765, 0.243137, 0.243137, 1 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.0392157, 0.141176, 0.321569, 1 )
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.501961, 0.121569, 0.121569, 1 )
+
+[node name="World" type="Spatial"]
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
+transform = Transform( 100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+shape = SubResource( 3 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32065, 0 )
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.0215 )
+material_override = SubResource( 4 )
+use_collision = true
+width = 17.6884
+depth = 12.1829
+
+[node name="CSGBox2" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1002, 0, -18.3701 )
+material_override = SubResource( 5 )
+use_collision = true
+width = 13.6912
+height = 5.54153
+depth = 7.81188
+
+[node name="CSGBox3" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.1107, 0, 0 )
+material_override = SubResource( 6 )
+use_collision = true
+height = 24.8256
+depth = 17.1182
